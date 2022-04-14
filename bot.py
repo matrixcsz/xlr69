@@ -1,3 +1,4 @@
+import keep_alive 
 import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -9,14 +10,6 @@ BOT_TOKEN = os.environ['BOT_TOKEN']
 TRACK_CHANNEL = int(os.environ['TRACK_CHANNEL'])
 OWNER_ID = os.environ['OWNER_ID']
 
-#Button
-START_BUTTONS=[
-    [
-        InlineKeyboardButton('Source', url='https://github.com/X-Gorn/File-Sharing'),
-        InlineKeyboardButton('Project Channel', url='https://t.me/xTeamBots'),
-    ],
-    [InlineKeyboardButton('Author', url="https://t.me/xgorn")],
-]
 
 # Running bot
 xbot = Client('File-Sharing', api_id=APP_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
@@ -155,5 +148,5 @@ async def _main(bot, update):
     copied = await update.copy(TRACK_CHANNEL)
     await __reply(update, copied)
 
-
+keep_alive.keep_alive()
 xbot.run()
