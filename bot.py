@@ -26,17 +26,7 @@ async def _startfile(bot, update):
     if update.text == '/start':
         await update.reply_text(
             f"I'm File-Sharing!\nYou can share any telegram files and get the sharing link using this bot!\n\n/help for more details...",
-            True, reply_markup=InlineKeyboardMarkup(START_BUTTONS))
-        return
-
-    if len(update.command) != 2:
-        return
-    code = update.command[1]
-    if '-' in code:
-        msg_id = code.split('-')[-1]
-        # due to new type of file_unique_id, it can contain "-" sign like "agadyruaas-puuo"
-        unique_id = '-'.join(code.split('-')[0:-1])
-
+          
         if not msg_id.isdigit():
             return
         try:  # If message not belong to media group raise exception
